@@ -3,8 +3,11 @@ import geopandas as gpd
 import numpy as np
 from scipy.spatial import cKDTree
 
-#Shapely
+# Shapely
 from shapely.ops import nearest_points
+
+# PostgreSQL
+import psycopg2
 
 # reading files
 # df_building = pd.read_csv("Building.csv")
@@ -28,3 +31,9 @@ def ckdnearest(gd_building, gd_road):
 gdf_result = ckdnearest(gdf_building, gdf_road)
 
 gdf_result.to_file("result.shp")
+
+
+# PostgreSQL
+connection = psycopg2.connect("host=192.168.24.97 port=9403 dbname=sampledb user=user password=password")
+cur = connection.cursor()
+cur.execute("SELECT ")
